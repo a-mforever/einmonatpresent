@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Unser erster Monat ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.7), transparent 25%),
+        radial-gradient(circle at 80% 10%, rgba(255,220,220,0.35), transparent 25%),
+        linear-gradient(135deg, #f8eadf, #f3dfd2, #f8ece4);
+    color: #5d4741;
+    overflow-x: hidden;
+}
+
+/* -------------------------
+   SCHWEBENDE HERZEN
+------------------------- */
+
+.floating-heart {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    animation: floatUp linear infinite;
+    z-index: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.35;
+    }
+
+    90% {
+        opacity: 0.25;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+/* -------------------------
+   HEADER
+------------------------- */
+
+header {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 70px 20px 45px;
+}
+
+.small-date {
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 15px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(42px, 8vw, 78px);
+    font-weight: 700;
+    color: #76564d;
+    animation: titleIn 1.3s ease;
+}
+
+.subtitle {
+    margin-top: 16px;
+    font-size: 19px;
+    opacity: 0.75;
+    animation: fadeIn 1.8s ease;
+}
+
+@keyframes titleIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* -------------------------
+   HAUPTBEREICH
+------------------------- */
+
+main {
+    position: relative;
+    z-index: 2;
+    width: min(1150px, 92%);
+    margin: auto;
+    padding-bottom: 100px;
+}
+
+.intro {
+    max-width: 700px;
+    margin: 0 auto 55px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* -------------------------
+   ERINNERUNGEN
+------------------------- */
+
+.memories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 55px 45px;
+    align-items: start;
+}
+
+.memory {
+    position: relative;
+    background: #fffdf9;
+    padding: 14px 14px 25px;
+    border-radius: 4px;
+    box-shadow:
+        0 12px 35px rgba(95, 67, 58, 0.16),
+        0 2px 5px rgba(95, 67, 58, 0.08);
+    transform: rotate(var(--rotation));
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+    animation: memoryIn 0.8s ease both;
+}
+
+.memory:hover {
+    transform: rotate(0deg) translateY(-8px) scale(1.015);
+    box-shadow:
+        0 20px 45px rgba(95, 67, 58, 0.22),
+        0 4px 8px rgba(95, 67, 58, 0.1);
+}
+
+@keyframes memoryIn {
+    from {
+        opacity: 0;
+        transform:
+            translateY(30px)
+            rotate(var(--rotation))
+            scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            rotate(var(--rotation))
+            scale(1);
+    }
+}
+
+.photo-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #eee4dd;
+}
+
+.photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.memory-text {
+    text-align: center;
+    margin-top: 18px;
+    padding: 0 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #654d46;
+}
+
+.memory-number {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 12px;
+    opacity: 0.4;
+}
+
+/* -------------------------
+   LÖSCHEN
+------------------------- */
+
+.delete-btn {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: #8b6b61;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: 0.25s;
+}
+
+.delete-btn:hover {
+    transform: scale(1.12);
+}
+
+/* -------------------------
+   ADD BUTTON
+------------------------- */
+
+.add-area {
+    text-align: center;
+    margin-top: 75px;
+}
+
+.add-btn {
+    border: none;
+    background: #76564d;
+    color: white;
+    padding: 15px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(95,67,58,0.18);
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(95,67,58,0.25);
+}
+
+/* -------------------------
+   MODAL
+------------------------- */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(65, 48, 43, 0.42);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 100;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    width: min(500px, 100%);
+    background: #fffaf6;
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.22);
+    animation: modalIn 0.35s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-box h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #76564d;
+}
+
+.field {
+    margin-top: 20px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    border: 1px solid #dfcec4;
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+}
+
+.field textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+    border-color: #a9897c;
+}
+
+.preview {
+    display: none;
+    margin-top: 15px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.cancel {
+    background: #eaded7;
+    color: #654d46;
+}
+
+.save {
+    background: #76564d;
+    color: white;
+}
+
+/* -------------------------
+   FOOTER
+------------------------- */
+
+footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 35px 20px 60px;
+    opacity: 0.65;
+    font-size: 14px;
+}
+
+.big-heart {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 12px;
+    animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+/* -------------------------
+   MOBILE
+------------------------- */
+
+@media (max-width: 600px) {
+
+    header {
+        padding-top: 50px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .memories {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .memory {
+        max-width: 390px;
+        margin: auto;
+    }
+
+    .modal-box {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Schwebende Herzen -->
+<div class="floating-heart" style="left:8%; animation-duration:13s; animation-delay:1s;">♡</div>
+<div class="floating-heart" style="left:18%; animation-duration:17s; animation-delay:5s;">♥</div>
+<div class="floating-heart" style="left:32%; animation-duration:15s; animation-delay:2s;">♡</div>
+<div class="floating-heart" style="left:48%; animation-duration:19s; animation-delay:7s;">♥</div>
+<div class="floating-heart" style="left:65%; animation-duration:14s; animation-delay:3s;">♡</div>
+<div class="floating-heart" style="left:78%; animation-duration:18s; animation-delay:8s;">♥</div>
+<div class="floating-heart" style="left:91%; animation-duration:16s; animation-delay:4s;">♡</div>
+
+<header>
+
+    <div class="small-date">
+        21.08.2026 · 21.09.2026
+    </div>
+
+    <h1>Unser erster Monat ❤️</h1>
+
+    <div class="subtitle">
+        Eine kleine Sammlung unserer schönsten Momente.
+    </div>
+
+</header>
+
+<main>
+
+    <div class="intro">
+        Manche Erinnerungen sind nur ein kleiner Moment.
+        Aber genau diese kleinen Momente können später
+        die schönsten Geschichten erzählen. ❤️
+    </div>
+
+    <section class="memories" id="memories"></section>
+
+    <div class="add-area">
+        <button class="add-btn" onclick="openModal()">
+            + Neue Erinnerung hinzufügen
+        </button>
+    </div>
+
+</main>
+
+<footer>
+
+    <span class="big-heart">❤️</span>
+
+    21.08.2026 · 21.09.2026
+
+    <br><br>
+
+    Und das ist erst der Anfang.
+
+</footer>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <h2>Neue Erinnerung ❤️</h2>
+
+        <div class="field">
+
+            <label>Foto auswählen</label>
+
+            <input
+                type="file"
+                id="photoInput"
+                accept="image/*"
+            >
+
+            <img
+                id="preview"
+                class="preview"
+                alt="Vorschau"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>Dein Text</label>
+
+            <textarea
+                id="textInput"
+                placeholder="Schreib etwas zu diesem Moment... ❤️"
+            ></textarea>
+
+        </div>
+
+        <div class="modal-buttons">
+
+            <button
+                class="cancel"
+                onclick="closeModal()"
+            >
+                Abbrechen
+            </button>
+
+            <button
+                class="save"
+                onclick="saveMemory()"
+            >
+                Erinnerung speichern ❤️
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* -------------------------
+   ELEMENTE
+------------------------- */
+
+const memoriesContainer =
+    document.getElementById("memories");
+
+const modal =
+    document.getElementById("modal");
+
+const photoInput =
+    document.getElementById("photoInput");
+
+const textInput =
+    document.getElementById("textInput");
+
+const preview =
+    document.getElementById("preview");
+
+
+/* -------------------------
+   DEMO-ERINNERUNGEN
+------------------------- */
+
+let memories = JSON.parse(
+    localStorage.getItem("arthurMemories") || "[]"
+);
+
+
+/* -------------------------
+   MODAL
+------------------------- */
+
+function openModal() {
+
+    modal.classList.add("active");
+
+    photoInput.value = "";
+    textInput.value = "";
+
+    preview.style.display = "none";
+    preview.src = "";
+}
+
+
+function closeModal() {
+
+    modal.classList.remove("active");
+}
+
+
+/* -------------------------
+   FOTO-VORSCHAU
+------------------------- */
+
+photoInput.addEventListener("change", function() {
+
+    const file = this.files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+
+        preview.src = event.target.result;
+        preview.style.display = "block";
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+
+/* -------------------------
+   SPEICHERN
+------------------------- */
+
+function saveMemory() {
+
+    const file = photoInput.files[0];
+
+    if (!file) {
+
+        alert("Bitte zuerst ein Foto auswählen. ❤️");
+        return;
+
+    }
+
+    const text =
+        textInput.value.trim();
+
+    if (!text) {
+
+        alert("Schreib noch einen kleinen Text dazu. ❤️");
+        return;
+
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+
+        const memory = {
+
+            image: event.target.result,
+
+            text: text,
+
+            rotation:
+                (Math.random() * 6 - 3).toFixed(2)
+
+        };
+
+        memories.push(memory);
+
+        localStorage.setItem(
+            "arthurMemories",
+            JSON.stringify(memories)
+        );
+
+        renderMemories();
+
+        closeModal();
+
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+/* -------------------------
+   ANZEIGEN
+------------------------- */
+
+function renderMemories() {
+
+    memoriesContainer.innerHTML = "";
+
+    memories.forEach((memory, index) => {
+
+        const article =
+            document.createElement("article");
+
+        article.className = "memory";
+
+        article.style.setProperty(
+            "--rotation",
+            memory.rotation + "deg"
+        );
+
+        article.innerHTML = `
+
+            <button
+                class="delete-btn"
+                onclick="deleteMemory(${index})"
+                title="Erinnerung löschen"
+            >
+                ×
+            </button>
+
+            <div class="photo-wrapper">
+
+                <img
+                    src="${memory.image}"
+                    alt="Unsere Erinnerung"
+                >
+
+            </div>
+
+            <div class="memory-text">
+                ${escapeHTML(memory.text)}
+            </div>
+
+            <div class="memory-number">
+                Erinnerung ${index + 1}
+            </div>
+
+        `;
+
+        memoriesContainer.appendChild(article);
+
+    });
+
+}
+
+
+/* -------------------------
+   LÖSCHEN
+------------------------- */
+
+function deleteMemory(index) {
+
+    if (!confirm("Diese Erinnerung löschen?")) {
+        return;
+    }
+
+    memories.splice(index, 1);
+
+    localStorage.setItem(
+        "arthurMemories",
+        JSON.stringify(memories)
+    );
+
+    renderMemories();
+}
+
+
+/* -------------------------
+   SICHERER TEXT
+------------------------- */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+
+/* -------------------------
+   MODAL AUSSEN KLICK
+------------------------- */
+
+modal.addEventListener("click", function(event) {
+
+    if (event.target === modal) {
+        closeModal();
+    }
+
+});
+
+
+/* -------------------------
+   START
+------------------------- */
+
+renderMemories();
+
+</script>
+
+</body>
+</html>
