@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Unser erster Monat ❤️</title>
+<title>Für Arthur ❤️</title>
 
 <style>
 * {
@@ -18,790 +18,1012 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.7), transparent 25%),
-        radial-gradient(circle at 80% 10%, rgba(255,220,220,0.35), transparent 25%),
-        linear-gradient(135deg, #f8eadf, #f3dfd2, #f8ece4);
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
     color: #5d4741;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(255,255,255,.75),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(255,220,210,.45),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f8eadf,
+            #f3ddd1,
+            #f8e9df
+        );
+
     overflow-x: hidden;
 }
 
-/* -------------------------
-   SCHWEBENDE HERZEN
-------------------------- */
 
-.floating-heart {
+/* =========================================
+   DEZENTE HINTERGRUND-PUNKTE
+========================================= */
+
+.background-dot {
     position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: rgba(170,130,115,.25);
+
     pointer-events: none;
-    opacity: 0;
-    animation: floatUp linear infinite;
+
+    animation: sparkle 4s ease-in-out infinite;
+
     z-index: 0;
 }
 
-@keyframes floatUp {
-    0% {
-        transform: translateY(110vh) rotate(0deg);
-        opacity: 0;
+@keyframes sparkle {
+
+    0%,100% {
+        opacity: .15;
+        transform: scale(.8);
     }
 
-    10% {
-        opacity: 0.35;
-    }
-
-    90% {
-        opacity: 0.25;
-    }
-
-    100% {
-        transform: translateY(-10vh) rotate(25deg);
-        opacity: 0;
+    50% {
+        opacity: .55;
+        transform: scale(1.4);
     }
 }
 
-/* -------------------------
+
+/* =========================================
    HEADER
-------------------------- */
+========================================= */
 
 header {
     position: relative;
+
     z-index: 2;
+
     text-align: center;
-    padding: 70px 20px 45px;
+
+    padding:
+        75px
+        20px
+        30px;
 }
 
-.small-date {
-    font-size: 14px;
-    letter-spacing: 4px;
+.date {
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
     text-transform: uppercase;
-    opacity: 0.65;
-    margin-bottom: 15px;
+
+    opacity: .55;
+
+    margin-bottom: 18px;
 }
 
 h1 {
     margin: 0;
-    font-size: clamp(42px, 8vw, 78px);
-    font-weight: 700;
+
     color: #76564d;
-    animation: titleIn 1.3s ease;
+
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            75px
+        );
+
+    font-weight: 600;
+
+    animation:
+        titleAppear
+        1.2s
+        ease;
 }
 
-.subtitle {
-    margin-top: 16px;
-    font-size: 19px;
-    opacity: 0.75;
-    animation: fadeIn 1.8s ease;
+.header-heart {
+    margin-top: 15px;
+
+    font-size: 25px;
+
+    animation:
+        heartbeat
+        2.2s
+        infinite;
 }
 
-@keyframes titleIn {
+@keyframes titleAppear {
+
     from {
         opacity: 0;
-        transform: translateY(25px) scale(0.96);
-    }
 
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-/* -------------------------
-   HAUPTBEREICH
-------------------------- */
-
-main {
-    position: relative;
-    z-index: 2;
-    width: min(1150px, 92%);
-    margin: auto;
-    padding-bottom: 100px;
-}
-
-.intro {
-    max-width: 700px;
-    margin: 0 auto 55px;
-    text-align: center;
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-/* -------------------------
-   ERINNERUNGEN
-------------------------- */
-
-.memories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 55px 45px;
-    align-items: start;
-}
-
-.memory {
-    position: relative;
-    background: #fffdf9;
-    padding: 14px 14px 25px;
-    border-radius: 4px;
-    box-shadow:
-        0 12px 35px rgba(95, 67, 58, 0.16),
-        0 2px 5px rgba(95, 67, 58, 0.08);
-    transform: rotate(var(--rotation));
-    transition:
-        transform 0.4s ease,
-        box-shadow 0.4s ease;
-    animation: memoryIn 0.8s ease both;
-}
-
-.memory:hover {
-    transform: rotate(0deg) translateY(-8px) scale(1.015);
-    box-shadow:
-        0 20px 45px rgba(95, 67, 58, 0.22),
-        0 4px 8px rgba(95, 67, 58, 0.1);
-}
-
-@keyframes memoryIn {
-    from {
-        opacity: 0;
         transform:
-            translateY(30px)
-            rotate(var(--rotation))
-            scale(0.95);
+            translateY(25px)
+            scale(.96);
     }
 
     to {
         opacity: 1;
+
         transform:
             translateY(0)
-            rotate(var(--rotation))
             scale(1);
     }
 }
 
-.photo-wrapper {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    background: #eee4dd;
-}
-
-.photo-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.memory-text {
-    text-align: center;
-    margin-top: 18px;
-    padding: 0 8px;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #654d46;
-}
-
-.memory-number {
-    text-align: center;
-    margin-top: 12px;
-    font-size: 12px;
-    opacity: 0.4;
-}
-
-/* -------------------------
-   LÖSCHEN
-------------------------- */
-
-.delete-btn {
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    width: 32px;
-    height: 32px;
-    border: none;
-    border-radius: 50%;
-    background: #8b6b61;
-    color: white;
-    cursor: pointer;
-    font-size: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: 0.25s;
-}
-
-.delete-btn:hover {
-    transform: scale(1.12);
-}
-
-/* -------------------------
-   ADD BUTTON
-------------------------- */
-
-.add-area {
-    text-align: center;
-    margin-top: 75px;
-}
-
-.add-btn {
-    border: none;
-    background: #76564d;
-    color: white;
-    padding: 15px 28px;
-    border-radius: 30px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(95,67,58,0.18);
-    transition: 0.3s;
-}
-
-.add-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(95,67,58,0.25);
-}
-
-/* -------------------------
-   MODAL
-------------------------- */
-
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(65, 48, 43, 0.42);
-    backdrop-filter: blur(8px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 100;
-}
-
-.modal.active {
-    display: flex;
-}
-
-.modal-box {
-    width: min(500px, 100%);
-    background: #fffaf6;
-    border-radius: 22px;
-    padding: 30px;
-    box-shadow: 0 25px 80px rgba(0,0,0,0.22);
-    animation: modalIn 0.35s ease;
-}
-
-@keyframes modalIn {
-    from {
-        opacity: 0;
-        transform: translateY(25px) scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.modal-box h2 {
-    margin-top: 0;
-    text-align: center;
-    color: #76564d;
-}
-
-.field {
-    margin-top: 20px;
-}
-
-.field label {
-    display: block;
-    margin-bottom: 7px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.field input,
-.field textarea {
-    width: 100%;
-    border: 1px solid #dfcec4;
-    background: white;
-    border-radius: 12px;
-    padding: 12px;
-    font-family: inherit;
-    font-size: 15px;
-    outline: none;
-}
-
-.field textarea {
-    min-height: 110px;
-    resize: vertical;
-}
-
-.field input:focus,
-.field textarea:focus {
-    border-color: #a9897c;
-}
-
-.preview {
-    display: none;
-    margin-top: 15px;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-.modal-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 25px;
-}
-
-.modal-buttons button {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-.cancel {
-    background: #eaded7;
-    color: #654d46;
-}
-
-.save {
-    background: #76564d;
-    color: white;
-}
-
-/* -------------------------
-   FOOTER
-------------------------- */
-
-footer {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 35px 20px 60px;
-    opacity: 0.65;
-    font-size: 14px;
-}
-
-.big-heart {
-    font-size: 28px;
-    display: block;
-    margin-bottom: 12px;
-    animation: heartbeat 2s infinite;
-}
-
 @keyframes heartbeat {
-    0%, 100% {
+
+    0%,100% {
         transform: scale(1);
     }
 
     50% {
-        transform: scale(1.12);
+        transform: scale(1.18);
     }
 }
 
-/* -------------------------
-   MOBILE
-------------------------- */
 
-@media (max-width: 600px) {
+/* =========================================
+   HAUPTBEREICH
+========================================= */
+
+.page {
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            1250px,
+            94%
+        );
+
+    margin:
+        0
+        auto
+        100px;
+}
+
+
+/* =========================================
+   FOTO-WAND
+========================================= */
+
+.photo-wall {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 1500px;
+
+    padding:
+        100px
+        230px;
+}
+
+
+/* =========================================
+   ZENTRALE TEXTKARTE
+========================================= */
+
+.letter {
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(
+            700px,
+            100%
+        );
+
+    margin:
+        0
+        auto;
+
+    padding:
+        65px
+        70px;
+
+    background:
+        rgba(
+            255,
+            252,
+            247,
+            .94
+        );
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(
+            95,
+            67,
+            58,
+            .13
+        );
+
+    animation:
+        letterAppear
+        1.4s
+        ease;
+}
+
+@keyframes letterAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+.letter-title {
+    text-align: center;
+
+    color: #76564d;
+
+    font-size: 30px;
+
+    margin-bottom: 45px;
+
+    font-weight: 600;
+}
+
+.letter-text {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 19px;
+
+    line-height: 2;
+
+    color: #604a43;
+
+    white-space: pre-line;
+}
+
+.letter-text .highlight {
+    text-align: center;
+
+    display: block;
+
+    margin:
+        40px
+        0;
+
+    color: #76564d;
+
+    font-size: 23px;
+}
+
+
+/* =========================================
+   POLAROIDS
+========================================= */
+
+.polaroid {
+    position: absolute;
+
+    z-index: 3;
+
+    width: 190px;
+
+    padding:
+        12px
+        12px
+        18px;
+
+    background: #fffdf9;
+
+    box-shadow:
+        0 15px 35px
+        rgba(
+            80,
+            55,
+            48,
+            .18
+        );
+
+    transition:
+        transform
+        .45s
+        ease,
+        box-shadow
+        .45s
+        ease;
+
+    animation:
+        photoAppear
+        1.2s
+        ease both;
+}
+
+.polaroid:hover {
+
+    z-index: 10;
+
+    transform:
+        rotate(0deg)
+        scale(1.08)
+        translateY(-8px);
+
+    box-shadow:
+        0 25px 50px
+        rgba(
+            80,
+            55,
+            48,
+            .27
+        );
+}
+
+.polaroid img {
+
+    width: 100%;
+
+    height: 165px;
+
+    object-fit: cover;
+
+    display: block;
+
+    background:
+        #eee3db;
+}
+
+.polaroid-caption {
+
+    text-align: center;
+
+    margin-top: 13px;
+
+    font-family:
+        "Segoe Print",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 13px;
+
+    color: #76564d;
+
+    line-height: 1.4;
+}
+
+@keyframes photoAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(.85);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   POLAROID POSITIONEN
+========================================= */
+
+.photo1 {
+
+    top: 50px;
+
+    left: 25px;
+
+    transform:
+        rotate(-8deg);
+
+    animation-delay:
+        .2s;
+}
+
+.photo2 {
+
+    top: 180px;
+
+    right: 30px;
+
+    transform:
+        rotate(7deg);
+
+    animation-delay:
+        .4s;
+}
+
+.photo3 {
+
+    top: 500px;
+
+    left: 15px;
+
+    transform:
+        rotate(6deg);
+
+    animation-delay:
+        .6s;
+}
+
+.photo4 {
+
+    top: 650px;
+
+    right: 10px;
+
+    transform:
+        rotate(-6deg);
+
+    animation-delay:
+        .8s;
+}
+
+.photo5 {
+
+    top: 950px;
+
+    left: 35px;
+
+    transform:
+        rotate(-5deg);
+
+    animation-delay:
+        1s;
+}
+
+.photo6 {
+
+    top: 1080px;
+
+    right: 25px;
+
+    transform:
+        rotate(8deg);
+
+    animation-delay:
+        1.2s;
+}
+
+
+/* =========================================
+   ABSCHLUSS
+========================================= */
+
+.end {
+
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    margin-top: 90px;
+
+    padding-bottom: 70px;
+
+    animation:
+        fadeIn
+        2s
+        ease;
+}
+
+.end-date {
+
+    font-size: 16px;
+
+    letter-spacing: 4px;
+
+    opacity: .55;
+
+    margin-bottom: 20px;
+}
+
+.end-title {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            45px
+        );
+
+    color: #76564d;
+}
+
+.end-heart {
+
+    margin-top: 20px;
+
+    font-size: 30px;
+
+    animation:
+        heartbeat
+        2.2s
+        infinite;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 850px) {
 
     header {
         padding-top: 50px;
     }
 
-    .subtitle {
-        font-size: 16px;
+    .photo-wall {
+
+        min-height: auto;
+
+        padding:
+            20px
+            0
+            40px;
     }
 
-    .memories {
-        grid-template-columns: 1fr;
-        gap: 45px;
+    .letter {
+
+        width: 94%;
+
+        padding:
+            40px
+            30px;
     }
 
-    .memory {
-        max-width: 390px;
-        margin: auto;
+    .letter-text {
+
+        font-size: 17px;
+
+        line-height: 1.85;
     }
 
-    .modal-box {
-        padding: 22px;
+    .polaroid {
+
+        position: relative;
+
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+
+        display: inline-block;
+
+        width: 150px;
+
+        margin:
+            20px
+            10px;
+
+        vertical-align: top;
+    }
+
+    .polaroid img {
+
+        height: 130px;
+    }
+
+    .photos-mobile {
+
+        text-align: center;
+
+        margin-top: 45px;
+    }
+
+    .photo-wall > .polaroid {
+
+        display: none;
     }
 }
+
+
+/* =========================================
+   EXTRA KLEINE HANDYS
+========================================= */
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .letter {
+
+        padding:
+            32px
+            22px;
+    }
+
+    .letter-title {
+
+        font-size: 26px;
+    }
+
+    .letter-text {
+
+        font-size: 16px;
+
+        line-height: 1.8;
+    }
+
+    .polaroid {
+
+        width: 140px;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- Schwebende Herzen -->
-<div class="floating-heart" style="left:8%; animation-duration:13s; animation-delay:1s;">♡</div>
-<div class="floating-heart" style="left:18%; animation-duration:17s; animation-delay:5s;">♥</div>
-<div class="floating-heart" style="left:32%; animation-duration:15s; animation-delay:2s;">♡</div>
-<div class="floating-heart" style="left:48%; animation-duration:19s; animation-delay:7s;">♥</div>
-<div class="floating-heart" style="left:65%; animation-duration:14s; animation-delay:3s;">♡</div>
-<div class="floating-heart" style="left:78%; animation-duration:18s; animation-delay:8s;">♥</div>
-<div class="floating-heart" style="left:91%; animation-duration:16s; animation-delay:4s;">♡</div>
+
+<!-- ======================================
+     HINTERGRUND
+====================================== -->
+
+<div class="background-dot"
+     style="left:8%;top:20%;animation-delay:0s;"></div>
+
+<div class="background-dot"
+     style="left:18%;top:60%;animation-delay:1s;"></div>
+
+<div class="background-dot"
+     style="left:31%;top:35%;animation-delay:2s;"></div>
+
+<div class="background-dot"
+     style="left:47%;top:75%;animation-delay:.5s;"></div>
+
+<div class="background-dot"
+     style="left:66%;top:18%;animation-delay:1.5s;"></div>
+
+<div class="background-dot"
+     style="left:79%;top:55%;animation-delay:2.5s;"></div>
+
+<div class="background-dot"
+     style="left:91%;top:32%;animation-delay:1s;"></div>
+
+
+<!-- ======================================
+     HEADER
+====================================== -->
 
 <header>
 
-    <div class="small-date">
+    <div class="date">
         21.08.2026 · 21.09.2026
     </div>
 
-    <h1>Unser erster Monat ❤️</h1>
+    <h1>
+        Für Arthur
+    </h1>
 
-    <div class="subtitle">
-        Eine kleine Sammlung unserer schönsten Momente.
+    <div class="header-heart">
+        ❤️
     </div>
 
 </header>
 
-<main>
 
-    <div class="intro">
-        Irgendwann wirst du mich umarmen, wenn du willst :o
-        aber bis dahin ist das mein Geschenk ❤️
-    </div>
+<!-- ======================================
+     SEITE
+====================================== -->
 
-    <section class="memories" id="memories"></section>
-
-    <div class="add-area">
-        <button class="add-btn" onclick="openModal()">
-            + Neue Erinnerung hinzufügen
-        </button>
-    </div>
-
-</main>
-
-<footer>
-
-    <span class="big-heart">❤️</span>
-
-    21.08.2026 · 21.09.2026
-
-    <br><br>
-
-    Und das ist erst der Anfang.
-
-</footer>
+<div class="page">
 
 
-<!-- MODAL -->
+    <section class="photo-wall">
 
-<div class="modal" id="modal">
 
-    <div class="modal-box">
+        <!-- ================================
+             FOTO 1
+        ================================= -->
 
-        <h2>Neue Erinnerung ❤️</h2>
-
-        <div class="field">
-
-            <label>Foto auswählen</label>
-
-            <input
-                type="file"
-                id="photoInput"
-                accept="image/*"
-            >
+        <div class="polaroid photo1">
 
             <img
-                id="preview"
-                class="preview"
-                alt="Vorschau"
+                src="images/foto1.jpg"
+                alt="Erinnerung"
             >
+
+            <div class="polaroid-caption">
+                unser erster Monat ❤️
+            </div>
 
         </div>
 
-        <div class="field">
 
-            <label>Dein Text</label>
+        <!-- ================================
+             FOTO 2
+        ================================= -->
 
-            <textarea
-                id="textInput"
-                placeholder="Schreib etwas zu diesem Moment... ❤️"
-            ></textarea>
+        <div class="polaroid photo2">
+
+            <img
+                src="images/foto2.jpg"
+                alt="Erinnerung"
+            >
+
+            <div class="polaroid-caption">
+                dieser Moment 🥹
+            </div>
 
         </div>
 
-        <div class="modal-buttons">
 
-            <button
-                class="cancel"
-                onclick="closeModal()"
-            >
-                Abbrechen
-            </button>
+        <!-- ================================
+             FOTO 3
+        ================================= -->
 
-            <button
-                class="save"
-                onclick="saveMemory()"
+        <div class="polaroid photo3">
+
+            <img
+                src="images/foto3.jpg"
+                alt="Erinnerung"
             >
-                Erinnerung speichern ❤️
-            </button>
+
+            <div class="polaroid-caption">
+                immer noch mein Lieblingsbild ❤️
+            </div>
 
         </div>
 
-    </div>
+
+        <!-- ================================
+             FOTO 4
+        ================================= -->
+
+        <div class="polaroid photo4">
+
+            <img
+                src="images/foto4.jpg"
+                alt="Erinnerung"
+            >
+
+            <div class="polaroid-caption">
+                weißt du noch? 😭❤️
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             FOTO 5
+        ================================= -->
+
+        <div class="polaroid photo5">
+
+            <img
+                src="images/foto5.jpg"
+                alt="Erinnerung"
+            >
+
+            <div class="polaroid-caption">
+                ein kleiner Moment 🫶🏻
+            </div>
+
+        </div>
+
+
+        <!-- ================================
+             FOTO 6
+        ================================= -->
+
+        <div class="polaroid photo6">
+
+            <img
+                src="images/foto6.jpg"
+                alt="Erinnerung"
+            >
+
+            <div class="polaroid-caption">
+                ❤️
+            </div>
+
+        </div>
+
+
+        <!-- ==================================
+             ZENTRALER BRIEF
+        ================================== -->
+
+        <article class="letter">
+
+            <div class="letter-title">
+                Unser erster Monat ❤️
+            </div>
+
+
+            <div class="letter-text">
+
+Lieber Arthur,
+
+heute sind wir tatsächlich schon einen ganzen Monat zusammen. 🥹❤️
+
+Wenn ich darüber nachdenke, wie viel in diesem einen Monat passiert ist, fühlt es sich gleichzeitig nach unglaublich viel und nach viel zu wenig Zeit an.
+
+Du bist innerhalb kürzester Zeit zu einem Menschen geworden, der mir unglaublich wichtig ist.
+
+Ich liebe unsere kleinen Gespräche, unsere Insider, unsere lustigen Momente und einfach diese ganzen kleinen Dinge, die vielleicht für andere völlig normal wären, für mich aber etwas Besonderes geworden sind. ❤️
+
+Und auch wenn wir gerade nicht einfach zusammen irgendwo sein können, ändert das nichts daran, wie wichtig du mir bist.
+
+Manchmal ist es irgendwie verrückt, dass jemand so weit weg sein kann und sich trotzdem so nah anfühlen kann.
+
+<span class="highlight">
+Ein Monat. 🥹❤️
+</span>
+
+Ich bin einfach froh, dass es dich gibt.
+
+Danke für deine süßen Nachrichten, dein Vertrauen, deine Art und dafür, dass du einfach du bist.
+
+Ich hoffe, dass wir noch ganz viele solche kleinen Erinnerungen sammeln.
+
+Noch ganz viele Fotos.
+
+Noch ganz viele Insider.
+
+Noch ganz viele Momente, bei denen wir irgendwann sagen:
+
+„Weißt du noch?“ 🥹
+
+Und irgendwann schauen wir vielleicht auf diese erste Seite zurück und denken:
+
+„Damals kam es uns ewig lang vor, aber wir haben es gemeinsam geschafft.“ ❤️
+
+Ich freue mich auf alles, was noch kommt.
+
+Auf all die Erinnerungen, die noch fehlen.
+
+Auf die Geschichten, die wir noch schreiben werden.
+
+Und vor allem darauf, dass dieser erste Monat irgendwann nur einer von ganz vielen sein wird.
+
+<span class="highlight">
+Danke für diesen ersten Monat. ❤️
+</span>
+
+Ich hab dich lieb.
+
+        </div>
+
+        </article>
+
+
+        <!-- ==================================
+             MOBILE FOTOS
+        ================================== -->
+
+        <div class="photos-mobile">
+
+            <div class="polaroid">
+
+                <img
+                    src="images/foto1.jpg"
+                    alt="Erinnerung"
+                >
+
+                <div class="polaroid-caption">
+                    unser erster Monat ❤️
+                </div>
+
+            </div>
+
+
+            <div class="polaroid">
+
+                <img
+                    src="images/foto2.jpg"
+                    alt="Erinnerung"
+                >
+
+                <div class="polaroid-caption">
+                    dieser Moment 🥹
+                </div>
+
+            </div>
+
+
+            <div class="polaroid">
+
+                <img
+                    src="images/foto3.jpg"
+                    alt="Erinnerung"
+                >
+
+                <div class="polaroid-caption">
+                    ❤️
+                </div>
+
+            </div>
+
+
+            <div class="polaroid">
+
+                <img
+                    src="images/foto4.jpg"
+                    alt="Erinnerung"
+                >
+
+                <div class="polaroid-caption">
+                    weißt du noch? 😭❤️
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==================================
+         ENDE
+    ================================== -->
+
+    <section class="end">
+
+        <div class="end-date">
+            21.08.2026 · 21.09.2026
+        </div>
+
+        <div class="end-title">
+            Unser erster Monat
+        </div>
+
+        <div class="end-heart">
+            ❤️
+        </div>
+
+    </section>
+
 
 </div>
 
-
-<script>
-
-/* -------------------------
-   ELEMENTE
-------------------------- */
-
-const memoriesContainer =
-    document.getElementById("memories");
-
-const modal =
-    document.getElementById("modal");
-
-const photoInput =
-    document.getElementById("photoInput");
-
-const textInput =
-    document.getElementById("textInput");
-
-const preview =
-    document.getElementById("preview");
-
-
-/* -------------------------
-   DEMO-ERINNERUNGEN
-------------------------- */
-
-let memories = JSON.parse(
-    localStorage.getItem("arthurMemories") || "[]"
-);
-
-
-/* -------------------------
-   MODAL
-------------------------- */
-
-function openModal() {
-
-    modal.classList.add("active");
-
-    photoInput.value = "";
-    textInput.value = "";
-
-    preview.style.display = "none";
-    preview.src = "";
-}
-
-
-function closeModal() {
-
-    modal.classList.remove("active");
-}
-
-
-/* -------------------------
-   FOTO-VORSCHAU
-------------------------- */
-
-photoInput.addEventListener("change", function() {
-
-    const file = this.files[0];
-
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onload = function(event) {
-
-        preview.src = event.target.result;
-        preview.style.display = "block";
-
-    };
-
-    reader.readAsDataURL(file);
-
-});
-
-
-/* -------------------------
-   SPEICHERN
-------------------------- */
-
-function saveMemory() {
-
-    const file = photoInput.files[0];
-
-    if (!file) {
-
-        alert("Bitte zuerst ein Foto auswählen. ❤️");
-        return;
-
-    }
-
-    const text =
-        textInput.value.trim();
-
-    if (!text) {
-
-        alert("Schreib noch einen kleinen Text dazu. ❤️");
-        return;
-
-    }
-
-    const reader = new FileReader();
-
-    reader.onload = function(event) {
-
-        const memory = {
-
-            image: event.target.result,
-
-            text: text,
-
-            rotation:
-                (Math.random() * 6 - 3).toFixed(2)
-
-        };
-
-        memories.push(memory);
-
-        localStorage.setItem(
-            "arthurMemories",
-            JSON.stringify(memories)
-        );
-
-        renderMemories();
-
-        closeModal();
-
-    };
-
-    reader.readAsDataURL(file);
-}
-
-
-/* -------------------------
-   ANZEIGEN
-------------------------- */
-
-function renderMemories() {
-
-    memoriesContainer.innerHTML = "";
-
-    memories.forEach((memory, index) => {
-
-        const article =
-            document.createElement("article");
-
-        article.className = "memory";
-
-        article.style.setProperty(
-            "--rotation",
-            memory.rotation + "deg"
-        );
-
-        article.innerHTML = `
-
-            <button
-                class="delete-btn"
-                onclick="deleteMemory(${index})"
-                title="Erinnerung löschen"
-            >
-                ×
-            </button>
-
-            <div class="photo-wrapper">
-
-                <img
-                    src="${memory.image}"
-                    alt="Unsere Erinnerung"
-                >
-
-            </div>
-
-            <div class="memory-text">
-                ${escapeHTML(memory.text)}
-            </div>
-
-            <div class="memory-number">
-                Erinnerung ${index + 1}
-            </div>
-
-        `;
-
-        memoriesContainer.appendChild(article);
-
-    });
-
-}
-
-
-/* -------------------------
-   LÖSCHEN
-------------------------- */
-
-function deleteMemory(index) {
-
-    if (!confirm("Diese Erinnerung löschen?")) {
-        return;
-    }
-
-    memories.splice(index, 1);
-
-    localStorage.setItem(
-        "arthurMemories",
-        JSON.stringify(memories)
-    );
-
-    renderMemories();
-}
-
-
-/* -------------------------
-   SICHERER TEXT
-------------------------- */
-
-function escapeHTML(text) {
-
-    const div =
-        document.createElement("div");
-
-    div.textContent = text;
-
-    return div.innerHTML;
-}
-
-
-/* -------------------------
-   MODAL AUSSEN KLICK
-------------------------- */
-
-modal.addEventListener("click", function(event) {
-
-    if (event.target === modal) {
-        closeModal();
-    }
-
-});
-
-
-/* -------------------------
-   START
-------------------------- */
-
-renderMemories();
-
-</script>
 
 </body>
 </html>
